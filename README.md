@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  <img alt="dtmoney" title="dtmoney" src=".github/logo.png" width="220px" />
+</h1>
 
-## Getting Started
+<p align="center">
+  <img alt="dashboard" src=".github/dashboard.png" width="100%">
+  <img alt="cadastrar-transacao" src=".github/cadastrar.png" width="100%">
+</p>
 
-First, run the development server:
+<br/>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+# dtmoney 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Gerenciador financeiro | Desenvolvimento do *dtmoney*, Utilizando React.Js 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+O dtmoney é uma aplicação de controle financeiro, com bibliotecas open source desenvolvidas pela comunidade. Foi desenvolvida durante as aulas do Chapter II da trilha de ReactJS do Bootcamp Ignite da Rocketseat, e nela é possível cadastrar e excluir transações e ver o saldo de entrada e saída 💰
 
-## Learn More
+## 🔖 Layout
 
-To learn more about Next.js, take a look at the following resources:
+Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/0xmu9mj2TJYoIOubBFWsk5/dtmoney-Ignite-(Copy)?node-id=0%3A1). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 📄 O que foi usado:
 
-## Deploy on Vercel
+- ReactJS
+- TypeScript
+- useState
+- Context API
+- Styled-Components
+- MirageJs
+- Axios
+- React Modal
+- Plished
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🛠 Mão na massa:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> Você pode realizar o clone deste repositório!
+
+Clone o repositório:
+
+`
+git clone https://github.com/Lucaslimasz/ignite-dtmoney.git
+`
+
+### 💻 Executando o projeto 🚀
+
+#### Na raiz do projeto, execute os comandos:
+
+# Para instalar as dependências
+yarn
+
+# Para startar o projeto utilize
+yarn start
+`
