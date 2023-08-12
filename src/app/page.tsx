@@ -26,8 +26,8 @@ export default function Home() {
     setInfo((oldState: any) => ([...oldState, inf]));
   };
 
-  const handleInputKeyPress = async (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+  const handleInputKeyPress = async (event: any) => {
+    if (event?.key === "Enter" || event.type === 'click') {
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         handleInputChange(valueInput)
@@ -47,7 +47,7 @@ export default function Home() {
 
 
   return (
-    <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-24">
+    <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-4 sm:px-10 md:px-24">
       <div className="flex w-full justify-between items-center">
         <p className="text-sm">
           README Generator
@@ -77,7 +77,7 @@ export default function Home() {
                 onKeyUp={handleInputKeyPress}
                 value={valueInput}
               />
-              <p className="mt-2 text-slate-500"><b className="text-slate-200">Enter</b> para continuar</p>
+              <p className="mt-2 text-slate-500" ><b className="text-slate-200 cursor-pointer" onClick={(e) => handleInputKeyPress(e)}>Enter</b> para continuar</p>
             </div>
           </div>
         )
@@ -85,8 +85,9 @@ export default function Home() {
 
 
       <div>
-        <p className="text-xs">Feito com 🤍 por Lucas Lima</p>
+        <p className="text-xs">Feito com 🤍 por <a className="font-semibold" href="https://github.com/lucaslimasz" target="_blank">Lucas Lima</a></p>
+        <p className="text-xs w-full text-center mt-1"><a href="https://github.com/Lucaslimasz/readme-generator" target="_blank">contribuintes</a></p>
       </div>
-    </main>
+    </main >
   );
 }
