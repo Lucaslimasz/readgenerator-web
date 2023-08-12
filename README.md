@@ -47,4 +47,5 @@ git clone https://github.com/Lucaslimasz/readgenerator-server
 yarn
 
 # Para startar o projeto utilize
-yarn start || npm install e 
+yarn start
+yarn dev
