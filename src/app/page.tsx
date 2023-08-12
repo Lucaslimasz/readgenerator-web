@@ -20,20 +20,24 @@ export default function Home() {
     setIsStart(true);
   };
 
-  const handleInputChange = (value: any) => {
-    let currentQuestion = questions[currentQuestionIndex].id.toLowerCase();
+  const handleInputChange = async (value: any) => {
+    let currentQuestion = await questions[currentQuestionIndex].id.toLowerCase();
     const inf = { id: currentQuestion, answer: value }
-    setInfo((oldState: any) => ([...oldState, inf]));
+    setInfo((oldState: any) => {
+      const newInfo = [...oldState, inf]
+      return newInfo
+    });
   };
 
   const handleInputKeyPress = async (event: any) => {
     if (event?.key === "Enter" || event.type === 'click') {
+      await handleInputChange(valueInput)
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        handleInputChange(valueInput)
-        setValueInput('')
       } else {
-        const { data } = await api.post('/questions', info);
+        const lastInf = { id: questions[currentQuestionIndex].id.toLowerCase(), answer: valueInput };
+        const newInfo = [...info, lastInf];
+        const { data } = await api.post('/questions', newInfo);
         const blob = new Blob([data], { type: 'text/markdown' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -42,6 +46,7 @@ export default function Home() {
         a.click();
         window.URL.revokeObjectURL(url);
       }
+      setValueInput('')
     }
   };
 
@@ -69,7 +74,7 @@ export default function Home() {
         isStart && (
           <div className="flex flex-col w-full items-center">
             <div className="w-full m-auto justify-center items-center max-w-xl">
-              <p className="text-lg text-slate-300 m-auto">{questions[currentQuestionIndex].question}</p>
+              <p className="text-lg text-slate-300 m-auto">{questions[currentQuestionIndex]?.question}</p>
               <input
                 className="bg-transparent w-full border-b-violet-700 border-b-[1px] mt-5 pb-4 text-2xl outline-0"
                 placeholder="Responda aqui"
