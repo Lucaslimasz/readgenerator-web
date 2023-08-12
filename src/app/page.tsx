@@ -8,11 +8,13 @@ export default function Home() {
   const [valueInput, setValueInput] = useState<string>('');
   const [questions, setQuestions] = useState<any>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [quantityUsers, setQuantityUsers] = useState<boolean>()
 
   useEffect(() => {
     (async () => {
       const { data } = await api.get('/questions')
       setQuestions(data.data);
+      setQuantityUsers(data.usersQuantity)
     })()
   }, []);
 
@@ -50,6 +52,10 @@ export default function Home() {
     }
   };
 
+  if (!questions || !quantityUsers) {
+    return null;
+  }
+
 
   return (
     <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-4 sm:px-10 md:px-24">
@@ -57,8 +63,9 @@ export default function Home() {
         <p className="text-sm">
           README Generator
         </p>
+
         <p className="w-44 text-right text-sm">
-          Usado 300 vezes
+          Usado {quantityUsers} vezes
         </p>
       </div>
 
