@@ -1,39 +1,33 @@
-<h1 align="center">
-  <img alt="dtmoney" title="dtmoney" src=".github/logo.png" width="220px" />
-</h1>
-
 <p align="center">
-  <img alt="dashboard" src=".github/dashboard.png" width="100%">
-  <img alt="cadastrar-transacao" src=".github/cadastrar.png" width="100%">
+    <img alt="ReadMe Generator" title="ReadMe Generator" src=".github/logo.png" width="100%" />
+<img alt="ReadMe Generator" title="ReadMe Generator" src=".github/page.png" width="100%" />
 </p>
 
 <br/>
 
-# dtmoney 
+# ReadMe Generator
 
-> Gerenciador financeiro | Desenvolvimento do *dtmoney*, Utilizando React.Js 
+> ReadMe Generator | Crie o seu README.md de forma fácil e rápida
 
 ## 💻 Projeto
 
-O dtmoney é uma aplicação de controle financeiro, com bibliotecas open source desenvolvidas pela comunidade. Foi desenvolvida durante as aulas do Chapter II da trilha de ReactJS do Bootcamp Ignite da Rocketseat, e nela é possível cadastrar e excluir transações e ver o saldo de entrada e saída 💰
+O ReadGenerator é uma aplicação para criar README.md de forma rápida. Com essa plataforma open source é possível criar os readme da sua aplicação de forma gratuita.
 
 ## 🔖 Layout
 
-Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/0xmu9mj2TJYoIOubBFWsk5/dtmoney-Ignite-(Copy)?node-id=0%3A1). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
+Você pode visualizar o layout do projeto através [desse link](https://readgenerator.vercel.app/). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
 
 ---
 
 ### 📄 O que foi usado:
 
-- ReactJS
+- Nextjs
 - TypeScript
-- useState
-- Context API
-- Styled-Components
-- MirageJs
+- Tailwind
 - Axios
-- React Modal
-- Plished
+- MongoDB
+- Nodejs
+- Express
 
 ### 🛠 Mão na massa:
 
@@ -42,9 +36,9 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 Clone o repositório:
 
 `
-git clone https://github.com/Lucaslimasz/ignite-dtmoney.git
+git clone https://github.com/Lucaslimasz/readgenerator-server
 `
-
+ 
 ### 💻 Executando o projeto 🚀
 
 #### Na raiz do projeto, execute os comandos:
@@ -53,5 +47,4 @@ git clone https://github.com/Lucaslimasz/ignite-dtmoney.git
 yarn
 
 # Para startar o projeto utilize
-yarn start
-`
+yarn start || npm install e 
