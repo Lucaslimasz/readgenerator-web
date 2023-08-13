@@ -78,11 +78,11 @@ export default function Home() {
   return (
     <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-4 sm:px-10 md:px-24">
       <div className="flex w-full justify-between items-center">
-        <p className="text-sm">
+        <p className="text-sm text-white">
           READGenerator
         </p>
 
-        <p className="w-44 text-right text-sm">
+        <p className="w-44 text-right text-sm text-white">
           Usado {quantityUsers} vezes
         </p>
       </div>
@@ -101,7 +101,7 @@ export default function Home() {
             <div className="w-full m-auto justify-center items-center max-w-xl">
               <p className="text-lg text-slate-300 m-auto">{questions[currentQuestionIndex]?.question}</p>
               <input
-                className="bg-transparent w-full border-b-violet-700 border-b-[1px] mt-5 pb-4 text-2xl outline-0"
+                className="bg-transparent w-full border-b-violet-700 border-b-[1px] mt-5 pb-4 text-2xl outline-0 text-white"
                 placeholder="Responda aqui"
                 onChange={(e) => setValueInput(e.target.value)}
                 onKeyUp={handleInputKeyPress}
@@ -119,8 +119,8 @@ export default function Home() {
       }
 
       <div>
-        <p className="text-xs">Feito com 🤍 por <a className="font-semibold" href="https://github.com/lucaslimasz" target="_blank">Lucas Lima</a></p>
-        <p className="text-xs w-full text-center mt-1"><a href="https://github.com/Lucaslimasz/readme-generator" target="_blank">contribuintes</a></p>
+        <p className="text-xs text-white">Feito com 🤍 por <a className="font-semibold" href="https://github.com/lucaslimasz" target="_blank">Lucas Lima</a></p>
+        <p className="text-xs w-full text-center mt-1 text-white"><a href="https://github.com/Lucaslimasz/readme-generator" target="_blank">contribuintes</a></p>
       </div>
     </main >
   );
