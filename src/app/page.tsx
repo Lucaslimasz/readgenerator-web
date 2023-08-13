@@ -1,6 +1,6 @@
 'use client'
 import { api } from "@/config/api";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isStart, setIsStart] = useState<boolean>(false);
@@ -47,6 +47,7 @@ export default function Home() {
         a.download = 'README.md';
         a.click();
         window.URL.revokeObjectURL(url);
+        window.location.href = '/';
       }
       setValueInput('')
     }
@@ -55,7 +56,6 @@ export default function Home() {
   if (!questions || !quantityUsers) {
     return null;
   }
-
 
   return (
     <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-4 sm:px-10 md:px-24">
@@ -94,7 +94,6 @@ export default function Home() {
           </div>
         )
       }
-
 
       <div>
         <p className="text-xs">Feito com 🤍 por <a className="font-semibold" href="https://github.com/lucaslimasz" target="_blank">Lucas Lima</a></p>
