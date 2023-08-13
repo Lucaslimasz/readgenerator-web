@@ -3,6 +3,9 @@
 import { api } from "@/config/api";
 import { useEffect, useState } from "react";
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { ToggleTheme } from "@/components/toggle-theme";
 
 interface IInformations {
@@ -61,7 +64,7 @@ export default function Home() {
         a.download = 'README.md';
         a.click();
         window.URL.revokeObjectURL(url);
-        window.location.href = '/';
+        toast.success('Download feito com sucesso!', { onClose: () => window.location.href = '/' });
       }
       setValueInput('')
     }
@@ -78,54 +81,69 @@ export default function Home() {
   }
 
   return (
-    <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-4 sm:px-10 md:px-24">
-      <div className="flex w-full justify-between items-center">
-        <p className="text-xs md:text-sm dark:text-white">
-          READGenerator
-        </p>
+    <>
+      <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-4 sm:px-10 md:px-24">
+        <div className="flex w-full justify-between items-center">
+          <p className="text-xs md:text-sm dark:text-white">
+            READGenerator
+          </p>
 
-        <ToggleTheme />
+          <ToggleTheme />
 
-        <p className="text-xs md:text-sm dark:text-white">
-          Usado {quantityUsers} vezes
-        </p>
-      </div>
+          <p className="text-xs md:text-sm dark:text-white">
+            Usado {quantityUsers} vezes
+          </p>
+        </div>
 
-      {
-        !isStart && (
-          <button onClick={handleStart} className="bg-purple-400 border-purple-700 dark:bg-[#180b2c] dark:border-purple-950 border-2 py-4 px-10 rounded-full font-bold dark:text-white">
-            Gerar ReadMe
-          </button>
-        )
-      }
+        {
+          !isStart && (
+            <button onClick={handleStart} className="bg-purple-400 border-purple-700 dark:bg-[#180b2c] dark:border-purple-950 border-2 py-4 px-10 rounded-full font-bold dark:text-white">
+              Gerar ReadMe
+            </button>
+          )
+        }
 
-      {
-        isStart && (
-          <div className="flex flex-col w-full items-center">
-            <div className="w-full m-auto justify-center items-center max-w-xl">
-              <p className="text-lg text-slate-400 dark:text-slate-300 m-auto">{questions[currentQuestionIndex]?.question}</p>
-              <input
-                className="bg-transparent w-full border-b-violet-700 border-b-[1px] mt-5 pb-4 text-2xl outline-0 dark:text-white"
-                placeholder="Responda aqui"
-                onChange={(e) => setValueInput(e.target.value)}
-                onKeyUp={handleInputKeyPress}
-                value={valueInput}
-              />
-              <div className="flex items-center mt-2">
-                <button onClick={handleGoBack} className="p-1 bg-purple-400 dark:bg-purple-900 mr-3 rounded-[3px]">
-                  <AiOutlineArrowLeft size="12" />
-                </button>
-                <p className="text-slate-400 dark:text-slate-500" ><b className="text-slate-500 dark:text-slate-200 cursor-pointer" onClick={(e) => handleInputKeyPress(e)}>Enter</b> para continuar</p>
+        {
+          isStart && (
+            <div className="flex flex-col w-full items-center">
+              <div className="w-full m-auto justify-center items-center max-w-xl">
+                <p className="text-lg text-slate-400 dark:text-slate-300 m-auto">{questions[currentQuestionIndex]?.question}</p>
+                <input
+                  className="bg-transparent w-full border-b-violet-700 border-b-[1px] mt-5 pb-4 text-2xl outline-0 dark:text-white"
+                  placeholder="Responda aqui"
+                  onChange={(e) => setValueInput(e.target.value)}
+                  onKeyUp={handleInputKeyPress}
+                  value={valueInput}
+                />
+                <div className="flex items-center mt-2">
+                  <button onClick={handleGoBack} className="p-1 bg-purple-400 dark:bg-purple-900 mr-3 rounded-[3px]">
+                    <AiOutlineArrowLeft size="12" />
+                  </button>
+                  <p className="text-slate-400 dark:text-slate-500" ><b className="text-slate-500 dark:text-slate-200 cursor-pointer" onClick={(e) => handleInputKeyPress(e)}>Enter</b> para continuar</p>
+                </div>
               </div>
             </div>
-          </div>
-        )
-      }
+          )
+        }
 
-      <div>
-        <p className="text-xs dark:text-white">Feito com 🤍 por <a className="font-semibold" href="https://github.com/lucaslimasz" target="_blank">Lucas Lima</a></p>
-        <p className="text-xs w-full text-center mt-1 dark:text-white"><a href="https://github.com/Lucaslimasz/readme-generator" target="_blank">contribuintes</a></p>
-      </div>
-    </main >
+        <div>
+          <p className="text-xs dark:text-white">Feito com 🤍 por <a className="font-semibold" href="https://github.com/lucaslimasz" target="_blank">Lucas Lima</a></p>
+          <p className="text-xs w-full text-center mt-1 dark:text-white"><a href="https://github.com/Lucaslimasz/readme-generator" target="_blank">contribuintes</a></p>
+        </div>
+      </main >
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="dark"
+      />
+    </>
   );
 }
