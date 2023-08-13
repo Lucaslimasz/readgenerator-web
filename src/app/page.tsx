@@ -89,7 +89,7 @@ export default function Home() {
 
       {
         !isStart && (
-          <button onClick={handleStart} className="bg-[#180b2c] border-purple-950 border-2 py-4 px-10 rounded-full font-bold">
+          <button onClick={handleStart} className="bg-[#180b2c] border-purple-950 border-2 py-4 px-10 rounded-full font-bold text-white">
             Gerar ReadMe
           </button>
         )
