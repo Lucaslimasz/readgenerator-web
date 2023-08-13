@@ -1,12 +1,18 @@
 'use client'
 import { api } from "@/config/api";
 import { useEffect, useState } from "react";
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+
+interface IInformations {
+  id: string;
+  question: string;
+}
 
 export default function Home() {
   const [isStart, setIsStart] = useState<boolean>(false);
   const [info, setInfo] = useState<any>([]);
   const [valueInput, setValueInput] = useState<string>('');
-  const [questions, setQuestions] = useState<any>([]);
+  const [questions, setQuestions] = useState<IInformations[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [quantityUsers, setQuantityUsers] = useState<boolean>()
 
@@ -24,10 +30,16 @@ export default function Home() {
 
   const handleInputChange = async (value: any) => {
     let currentQuestion = await questions[currentQuestionIndex].id.toLowerCase();
-    const inf = { id: currentQuestion, answer: value }
-    setInfo((oldState: any) => {
-      const newInfo = [...oldState, inf]
-      return newInfo
+    const inf: any = { id: currentQuestion, answer: value }
+    setInfo((oldState: IInformations[]) => {
+      if (oldState.find(item => item.id === inf.id)) {
+        let newInfo = oldState.filter(items => items.id !== inf.id);
+        newInfo = [...newInfo, inf]
+        return newInfo
+      } else {
+        const newInfo = [...oldState, inf]
+        return newInfo
+      }
     });
   };
 
@@ -53,6 +65,12 @@ export default function Home() {
     }
   };
 
+  const handleGoBack = () => {
+    if (currentQuestionIndex !== 0) {
+      setCurrentQuestionIndex(oldState => oldState - 1)
+    }
+  }
+
   if (!questions || !quantityUsers) {
     return null;
   }
@@ -61,7 +79,7 @@ export default function Home() {
     <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-4 sm:px-10 md:px-24">
       <div className="flex w-full justify-between items-center">
         <p className="text-sm">
-          README Generator
+          READGenerator
         </p>
 
         <p className="w-44 text-right text-sm">
@@ -89,7 +107,12 @@ export default function Home() {
                 onKeyUp={handleInputKeyPress}
                 value={valueInput}
               />
-              <p className="mt-2 text-slate-500" ><b className="text-slate-200 cursor-pointer" onClick={(e) => handleInputKeyPress(e)}>Enter</b> para continuar</p>
+              <div className="flex items-center mt-2">
+                <button onClick={handleGoBack} className="p-1 bg-purple-900 mr-3 rounded-[3px]">
+                  <AiOutlineArrowLeft size="12" />
+                </button>
+                <p className="text-slate-500" ><b className="text-slate-200 cursor-pointer" onClick={(e) => handleInputKeyPress(e)}>Enter</b> para continuar</p>
+              </div>
             </div>
           </div>
         )
