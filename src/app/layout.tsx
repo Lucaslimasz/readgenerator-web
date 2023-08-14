@@ -6,8 +6,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ReadGenerator',
-  description: 'ReadGenerator is an application to quickly create README.md.',
+  title: 'READGenerator',
+  description: 'READGenerator is an application to quickly create README.md. With this open-source platform, you can create your application\'s readme for free.',
 }
 
 export default function RootLayout({

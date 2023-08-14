@@ -1,7 +1,9 @@
 'use client'
+
 import { api } from "@/config/api";
 import { useEffect, useState } from "react";
-import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { ToggleTheme } from "@/components/toggle-theme";
 
 interface IInformations {
   id: string;
@@ -78,18 +80,20 @@ export default function Home() {
   return (
     <main className="flex w-full min-h-screen flex-col items-center justify-between py-10 px-4 sm:px-10 md:px-24">
       <div className="flex w-full justify-between items-center">
-        <p className="text-sm text-white">
+        <p className="text-xs md:text-sm dark:text-white">
           READGenerator
         </p>
 
-        <p className="w-44 text-right text-sm text-white">
+        <ToggleTheme />
+
+        <p className="text-xs md:text-sm dark:text-white">
           Usado {quantityUsers} vezes
         </p>
       </div>
 
       {
         !isStart && (
-          <button onClick={handleStart} className="bg-[#180b2c] border-purple-950 border-2 py-4 px-10 rounded-full font-bold text-white">
+          <button onClick={handleStart} className="bg-purple-400 border-purple-700 dark:bg-[#180b2c] dark:border-purple-950 border-2 py-4 px-10 rounded-full font-bold dark:text-white">
             Gerar ReadMe
           </button>
         )
@@ -99,19 +103,19 @@ export default function Home() {
         isStart && (
           <div className="flex flex-col w-full items-center">
             <div className="w-full m-auto justify-center items-center max-w-xl">
-              <p className="text-lg text-slate-300 m-auto">{questions[currentQuestionIndex]?.question}</p>
+              <p className="text-lg text-slate-400 dark:text-slate-300 m-auto">{questions[currentQuestionIndex]?.question}</p>
               <input
-                className="bg-transparent w-full border-b-violet-700 border-b-[1px] mt-5 pb-4 text-2xl outline-0 text-white"
+                className="bg-transparent w-full border-b-violet-700 border-b-[1px] mt-5 pb-4 text-2xl outline-0 dark:text-white"
                 placeholder="Responda aqui"
                 onChange={(e) => setValueInput(e.target.value)}
                 onKeyUp={handleInputKeyPress}
                 value={valueInput}
               />
               <div className="flex items-center mt-2">
-                <button onClick={handleGoBack} className="p-1 bg-purple-900 mr-3 rounded-[3px]">
+                <button onClick={handleGoBack} className="p-1 bg-purple-400 dark:bg-purple-900 mr-3 rounded-[3px]">
                   <AiOutlineArrowLeft size="12" />
                 </button>
-                <p className="text-slate-500" ><b className="text-slate-200 cursor-pointer" onClick={(e) => handleInputKeyPress(e)}>Enter</b> para continuar</p>
+                <p className="text-slate-400 dark:text-slate-500" ><b className="text-slate-500 dark:text-slate-200 cursor-pointer" onClick={(e) => handleInputKeyPress(e)}>Enter</b> para continuar</p>
               </div>
             </div>
           </div>
@@ -119,8 +123,8 @@ export default function Home() {
       }
 
       <div>
-        <p className="text-xs text-white">Feito com 🤍 por <a className="font-semibold" href="https://github.com/lucaslimasz" target="_blank">Lucas Lima</a></p>
-        <p className="text-xs w-full text-center mt-1 text-white"><a href="https://github.com/Lucaslimasz/readme-generator" target="_blank">contribuintes</a></p>
+        <p className="text-xs dark:text-white">Feito com 🤍 por <a className="font-semibold" href="https://github.com/lucaslimasz" target="_blank">Lucas Lima</a></p>
+        <p className="text-xs w-full text-center mt-1 dark:text-white"><a href="https://github.com/Lucaslimasz/readme-generator" target="_blank">contribuintes</a></p>
       </div>
     </main >
   );
